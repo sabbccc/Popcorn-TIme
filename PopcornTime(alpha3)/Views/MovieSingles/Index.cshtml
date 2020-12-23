@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PopcornTime_alpha3_.Models.MovieSingle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<!-- prs title wrapper Start -->
+<div class="prs_title_main_sec_wrapper">
+    <div class="prs_title_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_title_heading_wrapper">
+                    <h2>Bumblebee</h2>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                        <li>&nbsp;&nbsp; >&nbsp;&nbsp; Movie Single</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs title wrapper End -->
+<!-- prs ms trailer wrapper Start -->
+<div class="prs_ms_trailer_vid_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Movie</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                <div class="prs_ms_trailer_slider_main_wrapper">
+                    <div class="prs_ms_trailer_slider_left_wrapper">
+                        <div class="">
+                            <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <img src="../../Content/images/content/movie_single/vid_slider_img.jpg" alt="vp_img">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="prs_ms_trailer_slider_right_wrapper">
+                        <h2<span>February</span> 2019</h2>
+                        <p>Travis Knight Presnts</p>
+                        <h2>Bumblebee</h2>
+
+                        <h5><span>Starring -</span> xxx , xxx , xxx, xxx ,xxx</h5>
+                        <ul>
+                            <li>
+                                Directed by - <span>xxx</span>
+                            </li>
+                            <li>
+                                Produced by - <span>xxx</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs ms trailer wrapper End -->

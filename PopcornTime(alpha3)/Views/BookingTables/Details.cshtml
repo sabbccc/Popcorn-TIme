@@ -1,0 +1,27 @@
+﻿@model PopcornTime_alpha3_.Models.BookingTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookingTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Seatno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seatno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

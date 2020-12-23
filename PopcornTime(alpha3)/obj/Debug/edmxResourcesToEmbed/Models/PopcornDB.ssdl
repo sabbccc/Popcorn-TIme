@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PopScriptModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MovieDetails">
+    <Key>
+      <PropertyRef Name="MovieDetailsID" />
+    </Key>
+    <Property Name="MovieDetailsID" Type="int" Nullable="false" />
+    <Property Name="DirectorName" Type="varchar" MaxLength="20" />
+    <Property Name="MovieID" Type="int" />
+    <Property Name="TrailerID" Type="int" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="int" Nullable="false" />
+    <Property Name="MovieName" Type="varchar" MaxLength="20" />
+    <Property Name="MoviePoster" Type="image" />
+    <Property Name="MovieCat" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PaymentTable">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="MovieID" Type="int" />
+    <Property Name="SeatID" Type="int" />
+  </EntityType>
+  <EntityType Name="SeatDetails">
+    <Key>
+      <PropertyRef Name="SeatID" />
+    </Key>
+    <Property Name="SeatID" Type="int" Nullable="false" />
+    <Property Name="HallNo" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Trailer">
+    <Key>
+      <PropertyRef Name="TrailerID" />
+    </Key>
+    <Property Name="TrailerID" Type="int" Nullable="false" />
+    <Property Name="Filepath" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="25" />
+    <Property Name="UserType" Type="varchar" MaxLength="8" />
+    <Property Name="FirstName" Type="varchar" MaxLength="1" />
+    <Property Name="LastName" Type="varchar" MaxLength="1" />
+    <Property Name="Address" Type="varchar" MaxLength="1" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="1" />
+    <Property Name="Email" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK__MovieDeta__Movie__49C3F6B7">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+    <End Role="MovieDetails" Type="Self.MovieDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="MovieDetails">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MovieDeta__Trail__4D94879B">
+    <End Role="Trailer" Type="Self.Trailer" Multiplicity="0..1" />
+    <End Role="MovieDetails" Type="Self.MovieDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trailer">
+        <PropertyRef Name="TrailerID" />
+      </Principal>
+      <Dependent Role="MovieDetails">
+        <PropertyRef Name="TrailerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentTa__Movie__534D60F1">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+    <End Role="PaymentTable" Type="Self.PaymentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="PaymentTable">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentTa__SeatI__5629CD9C">
+    <End Role="SeatDetails" Type="Self.SeatDetails" Multiplicity="0..1" />
+    <End Role="PaymentTable" Type="Self.PaymentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeatDetails">
+        <PropertyRef Name="SeatID" />
+      </Principal>
+      <Dependent Role="PaymentTable">
+        <PropertyRef Name="SeatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentTa__UserI__52593CB8">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="PaymentTable" Type="Self.PaymentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PaymentTable">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PopScriptModelStoreContainer">
+    <EntitySet Name="MovieDetails" EntityType="Self.MovieDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentTable" EntityType="Self.PaymentTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeatDetails" EntityType="Self.SeatDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trailer" EntityType="Self.Trailer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__MovieDeta__Movie__49C3F6B7" Association="Self.FK__MovieDeta__Movie__49C3F6B7">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="MovieDetails" EntitySet="MovieDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MovieDeta__Trail__4D94879B" Association="Self.FK__MovieDeta__Trail__4D94879B">
+      <End Role="Trailer" EntitySet="Trailer" />
+      <End Role="MovieDetails" EntitySet="MovieDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentTa__Movie__534D60F1" Association="Self.FK__PaymentTa__Movie__534D60F1">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="PaymentTable" EntitySet="PaymentTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentTa__SeatI__5629CD9C" Association="Self.FK__PaymentTa__SeatI__5629CD9C">
+      <End Role="SeatDetails" EntitySet="SeatDetails" />
+      <End Role="PaymentTable" EntitySet="PaymentTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentTa__UserI__52593CB8" Association="Self.FK__PaymentTa__UserI__52593CB8">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="PaymentTable" EntitySet="PaymentTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PopcornTime_alpha3_.Models.PaymentTable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movy.MovieName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatDetail.SeatID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserTable.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movy.MovieName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatDetail.SeatID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTable.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PaymentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PaymentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PaymentID })
+        </td>
+    </tr>
+}
+
+</table>

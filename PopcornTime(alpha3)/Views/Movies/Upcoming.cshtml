@@ -1,0 +1,97 @@
+﻿@model PopcornTime_alpha3_.Models.Movy
+
+@{
+    ViewBag.Title = "Upcoming";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("../UserTables/Login");
+    }
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!-- prs title wrapper Start -->
+<div class="">
+    <div class="prs_title_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_title_heading_wrapper">
+                    <h2>Upcoming Movies</h2>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                        <li>&nbsp;&nbsp; >&nbsp;&nbsp; Upcoming Movies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs title wrapper End -->
+
+<!-- prs upcoming Slider Start -->
+<div class="prs_upcom_slider_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_upcome_tabs_wrapper">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#best" aria-controls="best" role="tab" data-toggle="tab">Upcoming Movies</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="best">
+                    <div class="prs_upcom_slider_slides_wrapper">
+                        <div class="">
+                            <div class="item">
+                                <div class="row">
+
+                                    <!--Posters-->
+                                    @for (int j = 0; j < 4; j++)
+                                    {
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
+                                            <div class="prs_upcom_movie_box_wrapper">
+                                                <div class="prs_upcom_movie_img_box">
+                                                    <img src="../../Content/images/content/up1.jpg" alt="movie_img" />
+                                                    <div class="prs_upcom_movie_img_overlay"></div>
+                                                    <div class="prs_upcom_movie_img_btn_wrapper">
+                                                        <ul>
+                                                            <li></li>
+                                                            <li>
+                                                                <a href="../MovieSingles/Index">View Details</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="prs_upcom_movie_content_box">
+                                                    <div class="prs_upcom_movie_content_box_inner">
+                                                        <h4>Artemis Fowl</h4>
+                                                        <p>Drama , Fiction</p>	<i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <!--Posters end-->
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs upcomung Slider End -->

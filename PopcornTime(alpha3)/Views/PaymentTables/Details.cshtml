@@ -1,0 +1,43 @@
+﻿@model PopcornTime_alpha3_.Models.PaymentTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PaymentTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Movy.MovieName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movy.MovieName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatDetail.SeatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatDetail.SeatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTable.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PaymentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
